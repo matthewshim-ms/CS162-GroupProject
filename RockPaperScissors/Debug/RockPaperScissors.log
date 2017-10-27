@@ -1,0 +1,9 @@
+﻿  Tool.cpp
+  Menu.cpp
+  main.cpp
+c:\users\matthew\documents\visual studio 2017\projects\groupproject-rps\rockpaperscissors\main.cpp(9): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  RPSGame.cpp
+  Player.cpp
+  Generating Code...
+  RockPaperScissors.vcxproj -> c:\users\matthew\documents\visual studio 2017\Projects\GroupProject-RPS\Debug\RockPaperScissors.exe
+  RockPaperScissors.vcxproj -> c:\users\matthew\documents\visual studio 2017\Projects\GroupProject-RPS\Debug\RockPaperScissors.pdb (Partial PDB)
