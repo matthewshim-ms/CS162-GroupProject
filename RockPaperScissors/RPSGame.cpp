@@ -100,39 +100,43 @@ void RPSGame::startGame()
 	//Sets tool strength as defined by the user
 	if (choose_tool_strength)
 	{
-		int rockStr;
-		int paperStr;
-		int scissorStr;
+
 		cout << "Please choose a tool strength for rock: ";
 		cin >> rockStr;
 		cout << "Please choose a tool strength for paper: ";
 		cin >> paperStr;
 		cout << "Please choose a tool strength for scissor: ";
 		cin >> scissorStr;
-	
-		Rock setStrength(rockStr);
-		Paper setStrength(paperStr);
-		Scissors setStrength(scissorStr);
+	}
 
-	}
-	else
-	{
-		Rock();
-		Paper();
-		Scissors();
-	}
+	//Note:  If player doesn't choose a default value, strength is
+	//set with initial value of 1.  There's probably a better
+	//way of doing it
+	Rock rock(rockStr); 
+	Paper paper(paperStr);
+	Scissors scissors(scissorStr);
+	cout << "Rock strength: " << rock.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
 
 	cout << "Choose your tool (r - rock, p - paper, s-scissor, e - exit): ";
 	tool = validateToolChoice(toolChoice);
 
 	if (tool == 1) {
 		// rock
+		cout << "You have chosen rock." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		cout << "Rock strength: " << rock.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
 	}
 	else if (tool == 2) {
 		// paper
+		cout << "You have chosen paper." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		cout << "Paper strength: " << paper.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+
+
 	}
 	else if (tool == 3) {
 		// scissors
+		cout << "You have chosen scissors." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		cout << "Scissors strength: " << scissors.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+
 	}
 	else if (tool == 4) {
 		// exit game

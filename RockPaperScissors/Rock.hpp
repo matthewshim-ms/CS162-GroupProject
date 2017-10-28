@@ -16,8 +16,8 @@ class Rock : public Tool
 {
 private:
 public:
-	Rock::Rock();
-	Rock::Rock(int incStr);
+	Rock();
+	Rock(int incStr);
 };
 
 

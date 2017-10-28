@@ -22,6 +22,9 @@ private:
 	int humanWins;
 	int computerWins;
 	int ties;
+	int rockStr = 1;
+	int paperStr = 1;
+	int scissorStr = 1;
 	void validateIntegerInput(int& input);
 	int validateToolChoice(char& input);
 	bool validateYesNo(string &input);

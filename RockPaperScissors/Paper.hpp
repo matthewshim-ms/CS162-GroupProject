@@ -15,8 +15,8 @@ class Paper : public Tool
 {
 private:
 public:
-	Paper::Paper();
-	Paper::Paper(int);
+	Paper();
+	Paper(int);
 };
 
 
