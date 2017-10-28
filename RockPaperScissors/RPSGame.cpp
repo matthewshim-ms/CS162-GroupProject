@@ -1,7 +1,17 @@
+/*********************************************************************
+** Program Name: Rock Paper Scissors Game
+** Author: Group 15
+** Date: 10/24/17
+** Description: Main file for a dice game
+**
+** To run this program, simply execute the RPSGame file after compiling
+*********************************************************************/
+#include <string>
 #include "RPSGame.hpp"
 #include "Menu.hpp"
-#include <iostream>
-#include <string>
+#include "Scissors.hpp"
+#include "Paper.hpp"
+#include "Rock.hpp"
 
 using std::endl;
 using std::cout;
@@ -87,17 +97,46 @@ void RPSGame::startGame()
 	choose_tool_strength = validateYesNo(yes_or_no);
 	cout << endl;
 
-	cout << "Choose your tool (r - rock, p - paper, s-sciossor, e - exit): ";
+	//Sets tool strength as defined by the user
+	if (choose_tool_strength)
+	{
+
+		cout << "Please choose a tool strength for rock: ";
+		cin >> rockStr;
+		cout << "Please choose a tool strength for paper: ";
+		cin >> paperStr;
+		cout << "Please choose a tool strength for scissor: ";
+		cin >> scissorStr;
+	}
+
+	//Note:  If player doesn't choose a default value, strength is
+	//set with initial value of 1.  There's probably a better
+	//way of doing it
+	Rock rock(rockStr); 
+	Paper paper(paperStr);
+	Scissors scissors(scissorStr);
+	cout << "Rock strength: " << rock.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+
+	cout << "Choose your tool (r - rock, p - paper, s-scissor, e - exit): ";
 	tool = validateToolChoice(toolChoice);
 
 	if (tool == 1) {
 		// rock
+		cout << "You have chosen rock." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		cout << "Rock strength: " << rock.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
 	}
 	else if (tool == 2) {
 		// paper
+		cout << "You have chosen paper." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		cout << "Paper strength: " << paper.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+
+
 	}
 	else if (tool == 3) {
 		// scissors
+		cout << "You have chosen scissors." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		cout << "Scissors strength: " << scissors.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+
 	}
 	else if (tool == 4) {
 		// exit game
