@@ -5,12 +5,14 @@
 class Tool
 {
 private:
-	int strength;
-	char type;
+	int strength = 0;
+protected:
+	char type = ' ';
 
 public:
 	Tool();
 	Tool(int strength);
+	void SetStrength(int); //Sets strength for the Tool
 	~Tool();
 };
 #endif 

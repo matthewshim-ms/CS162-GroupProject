@@ -1,7 +1,17 @@
+/*********************************************************************
+** Program Name: Rock Paper Scissors Game
+** Author: Group 15
+** Date: 10/24/17
+** Description: Main file for a dice game
+**
+** To run this program, simply execute the RPSGame file after compiling
+*********************************************************************/
+#include <string>
 #include "RPSGame.hpp"
 #include "Menu.hpp"
-#include <iostream>
-#include <string>
+#include "Scissors.hpp"
+#include "Paper.hpp"
+#include "Rock.hpp"
 
 using std::endl;
 using std::cout;
@@ -87,7 +97,32 @@ void RPSGame::startGame()
 	choose_tool_strength = validateYesNo(yes_or_no);
 	cout << endl;
 
-	cout << "Choose your tool (r - rock, p - paper, s-sciossor, e - exit): ";
+	//Sets tool strength as defined by the user
+	if (choose_tool_strength)
+	{
+		int rockStr;
+		int paperStr;
+		int scissorStr;
+		cout << "Please choose a tool strength for rock: ";
+		cin >> rockStr;
+		cout << "Please choose a tool strength for paper: ";
+		cin >> paperStr;
+		cout << "Please choose a tool strength for scissor: ";
+		cin >> scissorStr;
+	
+		Rock setStrength(rockStr);
+		Paper setStrength(paperStr);
+		Scissors setStrength(scissorStr);
+
+	}
+	else
+	{
+		Rock();
+		Paper();
+		Scissors();
+	}
+
+	cout << "Choose your tool (r - rock, p - paper, s-scissor, e - exit): ";
 	tool = validateToolChoice(toolChoice);
 
 	if (tool == 1) {

@@ -1,20 +1,28 @@
 #include "Tool.hpp"
 
 
-// default constructor, strength set to 1
+// default constructor
 Tool::Tool()
 {
-	strength = 1;
 }
 
-// descturctor
+// deconstructor
 Tool::~Tool()
 {
 
 }
 
-// overload constructor so user can specify strength
+//Sets strength for the Tool
+void Tool::SetStrength(int incStr)
+{
+	strength = incStr;
+}
+
+
+
+/* // overload constructor so user can specify strength
 Tool::Tool(int strength)
 {
 	this->strength = strength;
 }
+*/

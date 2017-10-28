@@ -1,3 +1,12 @@
+/*********************************************************************
+** Program Name: Rock Paper Scissors Game
+** Author: Group 15
+** Date: 10/24/17
+** Description: Main file for a dice game
+**
+** To run this program, simply execute the RPSGame file after compiling
+*********************************************************************/
+
 #ifndef RPSGame_HPP
 #define RPSGame_HPP
 #include "Player.hpp"
