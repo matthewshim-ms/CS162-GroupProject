@@ -11,11 +11,13 @@
 Paper::Paper() //Default constructor
 {
 	SetStrength(1);
-	type ='p';
+	SetType('p');
+
 }
 
 Paper::Paper(int incStr) //Custom constructor
 {
 	SetStrength(incStr);
-	type = 'p';
+	SetType('p');
+
 }
