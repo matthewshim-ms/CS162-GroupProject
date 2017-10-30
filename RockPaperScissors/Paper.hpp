@@ -13,7 +13,7 @@
 
 class Paper : public Tool
 {
-private:
+
 public:
 	Paper();
 	Paper(int);

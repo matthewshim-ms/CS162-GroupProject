@@ -13,13 +13,15 @@
 Rock::Rock() //Default constructor
 {
 	SetStrength(1);
-	type = 'r';
+	SetType('r');
+
 
 }
 
 Rock::Rock(int incStr) //Custom constructor
 {
 	SetStrength(incStr);
-	type = 'r';
+	SetType('r');
+
 
 }

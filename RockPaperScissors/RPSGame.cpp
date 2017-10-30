@@ -86,10 +86,9 @@ void RPSGame::startGame()
 
 	// variables for initializing game, based on user input
 	bool choose_tool_strength = false;
-	int tool;
 
 	//TODO: implement tool selection for AI?
-	int computerToolChoice;
+//	int computerToolChoice;
 
 	// start RPS prompts
 	cout << endl;
@@ -97,54 +96,255 @@ void RPSGame::startGame()
 	choose_tool_strength = validateYesNo(yes_or_no);
 	cout << endl;
 
-	//Sets tool strength as defined by the user
+	//Sets tool strength for the user and computer
 	if (choose_tool_strength)
 	{
 
-		cout << "Please choose a tool strength for rock: ";
-		cin >> rockStr;
-		cout << "Please choose a tool strength for paper: ";
-		cin >> paperStr;
-		cout << "Please choose a tool strength for scissor: ";
-		cin >> scissorStr;
+		cout << "Please choose a tool strength for player rock: ";
+		cin >> playerRockStr;
+
+		cout << "Please choose a tool strength for player paper: ";
+		cin >> playerPaperStr;
+
+		cout << "Please choose a tool strength for player scissor: ";
+		cin >> playerScissorsStr;
+
+		cout << "Now you need to set the strength for the computer's tools \n";
+
+		cout << "Please choose a tool strength for AI rock: ";
+		cin >> computerRockStr;
+
+		cout << "Please choose a tool strength for AI paper: ";
+		cin >> computerPaperStr;
+
+		cout << "Please choose a tool strength for AI scissors: ";
+		cin >> computerScissorsStr;
+
 	}
-
-	//Note:  If player doesn't choose a default value, strength is
-	//set with initial value of 1.  There's probably a better
-	//way of doing it
-	Rock rock(rockStr); 
-	Paper paper(paperStr);
-	Scissors scissors(scissorStr);
-	cout << "Rock strength: " << rock.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
-
 	cout << "Choose your tool (r - rock, p - paper, s-scissor, e - exit): ";
-	tool = validateToolChoice(toolChoice);
+	int tool = validateToolChoice(toolChoice);
 
 	if (tool == 1) {
 		// rock
 		cout << "You have chosen rock." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
-		cout << "Rock strength: " << rock.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		if (playerRockStr != NULL) {
+			Rock playerRock(playerRockStr);
+			playerTool = &playerRock;
+
+		}
+		else
+		{
+			Rock playerRock;
+			playerTool = &playerRock;
+
+
+		}
+
 	}
+
 	else if (tool == 2) {
 		// paper
 		cout << "You have chosen paper." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
-		cout << "Paper strength: " << paper.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		if (playerPaperStr != NULL) {
+			Paper playerPaper(playerPaperStr);
+			playerTool = &playerPaper;
+		}
+		else
 
-
+		{
+			Paper playerPaper;
+			playerTool = &playerPaper;
+		}
 	}
+
 	else if (tool == 3) {
 		// scissors
 		cout << "You have chosen scissors." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
-		cout << "Scissors strength: " << scissors.GetStrength() << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		if (playerScissorsStr != NULL) {
+			Scissors playerScissors(playerScissorsStr);
+			playerTool = &playerScissors;
+		}
+		else
 
+		{
+			Scissors playerScissors;
+			playerTool = &playerScissors;
+		}
 	}
-	else if (tool == 4) {
-		// exit game
-		return;
+
+		else if (tool == 4) {
+			// exit game
+			return;
+		}
+	
+	//Random AI for testing
+	//Needs to be improved
+	switch (rand() % 3 + 1)
+	{
+	case 1:
+		cout << "The computer has chosen rock." << endl;
+		if (computerRockStr != NULL)
+		{
+				Rock computerRock(computerRockStr);
+
+				computerTool = &computerRock;
+
+			}
+			else
+
+			{
+				Rock computerRock;
+				computerTool = &computerRock;
+
+			}
+		break;
+
+	case 2:
+		cout << "The computer has chosen paper." << endl;
+		if (computerPaperStr != NULL)
+		{
+			Paper computerPaper(computerPaperStr);
+			computerTool = &computerPaper;
+
+		}
+		else
+
+		{
+			Paper computerPaper;
+			computerTool = &computerPaper;
+
+		}
+		break;
+
+	case 3:
+		cout << "The computer has chosen scissors." << endl;
+		if (computerScissorsStr != NULL)
+		{
+			Scissors computerScissors(computerScissorsStr);
+			computerTool = &computerScissors;
+
+		}
+		else
+
+		{
+			Scissors computerScissors;
+			computerTool = &computerScissors;
+		}
+		break;
+
+	default:
+		cout << "An error occured in the AI tool selection switch statement \n";
 	}
-
-
+	gameLoop(); //Starts game loop
 }
+
+void RPSGame::gameLoop()
+{	
+
+	char playerToolType = playerTool->GetType();
+	char compToolType = computerTool->GetType();
+	int playerToolStr = playerTool->GetStrength();
+	int compToolStr = computerTool->GetStrength();
+
+	//This mess can likely be improved and broken out into its own function
+	if (playerToolType == 'r')
+	{
+		switch (compToolType) 
+		{
+
+		case 'r':
+			//No change due to same tool type
+			break;
+
+
+		case 'p':
+			playerToolStr /= 2;
+			compToolStr *= 2;
+			break;
+
+		case 's':
+			playerToolStr *= 2;
+			compToolStr /= 2;
+			break;
+
+		default:
+			cout << "An error occured in the set player tool strength of the gameloop" << endl;
+
+		}
+	}
+	
+	else if (playerToolType == 'p')
+	{
+		switch (compToolType) 
+		{
+
+		case 'r':
+			playerToolStr /= 2;
+			compToolStr *= 2;
+			break;
+
+		case 'p':
+			//No change due to same tool type
+			break;
+
+		case 's':
+			playerToolStr *= 2;
+			compToolStr /= 2;
+			break;
+
+		default:
+			cout << "An error occured in the set player tool strength of the gameloop" << endl;
+
+		}
+
+	}
+
+			else if (playerToolType == 's')
+			{
+				switch (compToolType) 
+				{
+
+				case 'r':
+					playerToolStr /= 2;
+					compToolStr *= 2;
+					break;
+
+
+				case 'p':
+					playerToolStr *= 2;
+					compToolStr /= 2;
+					break;
+
+				case 's':
+					//No change due to same tool type
+					break;
+
+				default:
+					cout << "An error occured scissors portion of set tool strength portion of the gameloop" << endl;
+				}
+			}
+	toolFight(playerToolStr, compToolStr); //Compares strengths
+
+};
+
+//Compares adjusted strengths of tools
+void RPSGame::toolFight(int incPlToolStr,int incCoToolStr)
+{
+	if (incPlToolStr > incCoToolStr)
+	{
+		cout << "You win!" << endl;
+		humanWins++;
+	}
+	else
+	{
+		cout << "The computer wins!  :-( " << endl;
+		computerWins++;
+	}
+	cout << "Times you've won: " << humanWins << endl;
+	cout << "Times the computer has won: " << computerWins << endl;
+	playAgain(); //Asks if use would like to play again
+};
+
 
 
 void RPSGame::validateIntegerInput(int& input)
@@ -237,6 +437,30 @@ int RPSGame::validateToolChoice(char& input)
 
 	// dummy return, will never reach this
 	return 0;
+}
+
+void RPSGame::playAgain()
+{
+	char userChoice;
+	cout << "Would you like to play again? ";
+	cin.clear();
+	cin.ignore(80, '\n');
+	cin >> userChoice;
+	switch (userChoice)
+	{
+	case ('y') : 
+		startGame();
+		break;
+
+	case ('n'):
+		exitGame();
+		break;
+
+	default:
+		cout << "An error occured in the play again logic" << endl;
+	}
+
+
 }
 
 

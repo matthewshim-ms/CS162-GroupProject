@@ -1,6 +1,5 @@
-﻿  RPSGame.cpp
-c:\users\nomad\source\repos\cs162-groupproject\rockpaperscissors\rpsgame.cpp(92): warning C4101: 'computerToolChoice': unreferenced local variable
+﻿  main.cpp
+c:\users\nomad\source\repos\cs162-groupproject\rockpaperscissors\main.cpp(21): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  RPSGame.cpp
   Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
   RockPaperScissors.vcxproj -> C:\Users\Nomad\Source\Repos\CS162-GroupProject\Debug\RockPaperScissors.exe
