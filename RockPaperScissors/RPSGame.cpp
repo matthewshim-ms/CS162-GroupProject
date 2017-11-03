@@ -13,6 +13,8 @@
 #include "Paper.hpp"
 #include "Rock.hpp"
 
+#include "validateInput.hpp"
+
 using std::endl;
 using std::cout;
 using std::cin;
@@ -61,7 +63,8 @@ void RPSGame::RPSMenu()
 
 	while (!valid_menu_choice)
 	{
-		validateIntegerInput(userChoice);
+		//validateIntegerInput(userChoice);
+		getNum(userChoice);
 		cout << endl;
 		if (userChoice > menu.Count() || userChoice < 1)
 			cout << "Not a valid selection, please try again: ";
@@ -92,34 +95,112 @@ void RPSGame::startGame()
 
 	// start RPS prompts
 	cout << endl;
-	cout << "Welcome to Rock, Paper, Scissors! Do you want to choose different strengths for the tools? (Y/N): ";
-	choose_tool_strength = validateYesNo(yes_or_no);
+	
+	//choose_tool_strength = validateYesNo(yes_or_no);
+	//getYesNo(choose_tool_strength);
+	do
+	{
+		cout << "Welcome to Rock, Paper, Scissors! Do you want to choose different strengths for the tools? (y/n): ";
+		getline(cin, yes_or_no);
+		if (yes_or_no.length() > 1
+			|| tolower(yes_or_no[0]) != 'y'
+			&& tolower(yes_or_no[0]) != 'n')
+		{
+			cout << "Please enter either 'y' or 'n'." << endl;
+		}
+	} while (yes_or_no.length() > 1
+		|| tolower(yes_or_no[0]) != 'y'
+		&& tolower(yes_or_no[0]) != 'n');
+
+	if (yes_or_no == "y")
+	{
+		choose_tool_strength = true;
+	}
+	else if (yes_or_no == "n")
+	{
+		choose_tool_strength = false;
+	}
+
 	cout << endl;
 
 	//Sets tool strength for the user and computer
 	if (choose_tool_strength)
 	{
+		// Player Rock Strength
+		do
+		{
+			cout << "Please choose a tool strength for player rock: ";
+			//cin >> playerRockStr;
+			getNum(playerRockStr);	// from validateInput.cpp
+			if (playerRockStr < 0)
+			{
+				cout << "Please choose a positive strength." << endl;
+			}
+		} while (playerRockStr < 0);
 
-		cout << "Please choose a tool strength for player rock: ";
-		cin >> playerRockStr;
+		// Player Paper Strength
+		do
+		{
+			cout << "Please choose a tool strength for player paper: ";
+			//cin >> playerPaperStr;
+			getNum(playerPaperStr);	// from validateInput.cpp
+			if (playerPaperStr < 0)
+			{
+				cout << "Please choose a positive strength." << endl;
+			}
+		} while (playerPaperStr < 0);
 
-		cout << "Please choose a tool strength for player paper: ";
-		cin >> playerPaperStr;
+		// Player Scissor Strength
+		do
+		{
+			cout << "Please choose a tool strength for player scissor: ";
+			//cin >> playerScissorsStr;
+			getNum(playerScissorsStr);	// from validateInput.cpp
+			if (playerScissorsStr < 0)
+			{
+				cout << "Please choose a positive strength." << endl;
+			}
+		} while (playerScissorsStr < 0);
 
-		cout << "Please choose a tool strength for player scissor: ";
-		cin >> playerScissorsStr;
 
 		cout << "Now you need to set the strength for the computer's tools \n";
 
-		cout << "Please choose a tool strength for AI rock: ";
-		cin >> computerRockStr;
 
-		cout << "Please choose a tool strength for AI paper: ";
-		cin >> computerPaperStr;
+		// Computer Rock Strength
+		do
+		{
+			cout << "Please choose a tool strength for AI rock: ";
+			//cin >> computerRockStr;
+			getNum(computerRockStr);	// from validateInput.cpp
+			if (computerRockStr < 0)
+			{
+				cout << "Please choose a positive strength." << endl;
+			}
+		} while (computerRockStr < 0);
 
-		cout << "Please choose a tool strength for AI scissors: ";
-		cin >> computerScissorsStr;
+		// Computer Paper Strength
+		do
+		{
+			cout << "Please choose a tool strength for AI paper: ";
+			//cin >> computerPaperStr;
+			getNum(computerPaperStr);	// from validateInput.cpp
+			if (computerPaperStr < 0)
+			{
+				cout << "Please choose a positive strength." << endl;
+			}
+		} while (computerPaperStr < 0);
 
+		// Computer Scissor Strength
+		do
+		{
+			cout << "Please choose a tool strength for AI scissors: ";
+			//cin >> computerScissorsStr;
+			getNum(computerScissorsStr);	// from validateInput.cpp
+			if (computerScissorsStr < 0)
+			{
+				cout << "Please choose a positive strength." << endl;
+			}
+		} while (computerScissorsStr < 0);
 	}
 	cout << "Choose your tool (r - rock, p - paper, s-scissor, e - exit): ";
 	int tool = validateToolChoice(toolChoice);
@@ -441,25 +522,62 @@ int RPSGame::validateToolChoice(char& input)
 
 void RPSGame::playAgain()
 {
-	char userChoice;
-	cout << "Would you like to play again? ";
-	cin.clear();
 	cin.ignore(80, '\n');
-	cin >> userChoice;
-	switch (userChoice)
+	string validateInput;
+	bool userChoice;
+	do
 	{
-	case ('y') : 
-		startGame();
-		break;
+		cout << "Would you like to play again (y/n)? ";
+		getline(cin, validateInput);
+		if (validateInput.length() > 1
+			|| tolower(validateInput[0]) != 'y'
+			&& tolower(validateInput[0]) != 'n')
+		{
+		cout << "Please enter either 'y' or 'n'." << endl;
+		}
+	} while (validateInput.length() > 1
+		|| tolower(validateInput[0]) != 'y'
+		&& tolower(validateInput[0]) != 'n');
 
-	case ('n'):
-		exitGame();
-		break;
-
-	default:
-		cout << "An error occured in the play again logic" << endl;
+	if (validateInput == "y")
+	{
+		userChoice = true;
+	}
+	else if (validateInput == "n")
+	{
+		userChoice = false;
 	}
 
+	switch(userChoice)
+	{
+	case true:
+		startGame();
+		break;
+	case false:
+		exitGame();
+	}
+	//char userChoice;
+	//do
+	//{
+	//	cout << "Would you like to play again? ";
+	//	cin.clear();
+	//	cin.ignore(80, '\n');
+	//	cin >> userChoice;
+	//	switch (userChoice)
+	//	{
+	//	case ('y'):
+	//		startGame();
+	//		break;
+
+	//	case ('n'):
+	//		exitGame();
+	//		break;
+
+	//	default:
+	//		//cout << "An error occured in the play again logic" << endl;
+	//		cout << "Please choose either y or n." << endl;
+	//	}
+	//} while (userChoice != 'y' || userChoice != 'n');
 
 }
 
