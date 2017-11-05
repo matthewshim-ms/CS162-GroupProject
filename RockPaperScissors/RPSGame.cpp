@@ -127,7 +127,7 @@ void RPSGame::startGame()
 	if (tool == 1) {
 		// rock
 		cout << "You have chosen rock." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
-		if (playerRockStr != NULL) {
+		if (playerRockStr != 0) {
 			Rock playerRock(playerRockStr);
 			playerTool = &playerRock;
 
@@ -145,7 +145,7 @@ void RPSGame::startGame()
 	else if (tool == 2) {
 		// paper
 		cout << "You have chosen paper." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
-		if (playerPaperStr != NULL) {
+		if (playerPaperStr != 0) {
 			Paper playerPaper(playerPaperStr);
 			playerTool = &playerPaper;
 		}
@@ -160,7 +160,7 @@ void RPSGame::startGame()
 	else if (tool == 3) {
 		// scissors
 		cout << "You have chosen scissors." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
-		if (playerScissorsStr != NULL) {
+		if (playerScissorsStr != 0) {
 			Scissors playerScissors(playerScissorsStr);
 			playerTool = &playerScissors;
 		}
@@ -183,7 +183,7 @@ void RPSGame::startGame()
 	{
 	case 1:
 		cout << "The computer has chosen rock." << endl;
-		if (computerRockStr != NULL)
+		if (computerRockStr != 0)
 		{
 				Rock computerRock(computerRockStr);
 
@@ -201,7 +201,7 @@ void RPSGame::startGame()
 
 	case 2:
 		cout << "The computer has chosen paper." << endl;
-		if (computerPaperStr != NULL)
+		if (computerPaperStr != 0)
 		{
 			Paper computerPaper(computerPaperStr);
 			computerTool = &computerPaper;
@@ -218,7 +218,7 @@ void RPSGame::startGame()
 
 	case 3:
 		cout << "The computer has chosen scissors." << endl;
-		if (computerScissorsStr != NULL)
+		if (computerScissorsStr != 0)
 		{
 			Scissors computerScissors(computerScissorsStr);
 			computerTool = &computerScissors;
@@ -333,12 +333,16 @@ void RPSGame::toolFight(int incPlToolStr,int incCoToolStr)
 	if (incPlToolStr > incCoToolStr)
 	{
 		cout << "You win!" << endl;
-		humanWins++;
+		humanWins = humanWins + 1;
+	}
+	else if (incPlToolStr == incCoToolStr)
+	{
+		cout << "It's a tie!" << endl;
 	}
 	else
 	{
 		cout << "The computer wins!  :-( " << endl;
-		computerWins++;
+		computerWins = computerWins + 1;
 	}
 	cout << "Times you've won: " << humanWins << endl;
 	cout << "Times the computer has won: " << computerWins << endl;
@@ -441,18 +445,20 @@ int RPSGame::validateToolChoice(char& input)
 
 void RPSGame::playAgain()
 {
-	char userChoice;
-	cout << "Would you like to play again? ";
+	string userChoice;
+	cout << "Would you like to play again?" << endl;
+	cout << "Please enter Y or N: ";
 	cin.clear();
 	cin.ignore(80, '\n');
 	cin >> userChoice;
-	switch (userChoice)
+	switch (validateYesNo(userChoice))
+
 	{
-	case ('y') : 
+	case (true) : 
 		startGame();
 		break;
 
-	case ('n'):
+	case (false):
 		exitGame();
 		break;
 

@@ -1,5 +1,5 @@
-﻿  main.cpp
-c:\users\nomad\source\repos\cs162-groupproject\rockpaperscissors\main.cpp(21): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  play_game.cpp
+c:\users\nomad\source\repos\cs162-groupproject\rockpaperscissors\play_game.cpp(15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   RPSGame.cpp
   Generating Code...
   RockPaperScissors.vcxproj -> C:\Users\Nomad\Source\Repos\CS162-GroupProject\Debug\RockPaperScissors.exe
