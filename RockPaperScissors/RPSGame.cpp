@@ -2,7 +2,7 @@
 ** Program Name: Rock Paper Scissors Game
 ** Author: Group 15
 ** Date: 10/24/17
-** Description: Main file for a dice game
+** Description: Main file for a RPS game
 **
 ** To run this program, simply execute the RPSGame file after compiling
 *********************************************************************/
@@ -26,7 +26,7 @@ RPSGame::RPSGame()
 	// human player
 	player = new Player();
 
-	// true sets this player to be a computer... 
+	// true sets this player to be a computer
 	computer = new Player(true);
 }
 
@@ -47,9 +47,6 @@ void RPSGame::RPSMenu()
 
 	bool valid_menu_choice = false;
 	int userChoice;
-
-	// NOTE to classmates: This menu stuff is optional....I sort of just added it in blindly, we 
-	// may want to remove later to more closely follow the 'Example' from the requirements, i.e no menu
 
 	Menu menu = Menu();
 	menu.Add("Play Game");
@@ -77,7 +74,6 @@ void RPSGame::RPSMenu()
 	}
 }
 
-
 void RPSGame::startGame()
 {
 	// variables for user input
@@ -86,9 +82,6 @@ void RPSGame::startGame()
 
 	// variables for initializing game, based on user input
 	bool choose_tool_strength = false;
-
-	//TODO: implement tool selection for AI?
-//	int computerToolChoice;
 
 	// start RPS prompts
 	cout << endl;
@@ -121,12 +114,13 @@ void RPSGame::startGame()
 		cin >> computerScissorsStr;
 
 	}
+
 	cout << "Choose your tool (r - rock, p - paper, s-scissor, e - exit): ";
 	int tool = validateToolChoice(toolChoice);
 
 	if (tool == 1) {
 		// rock
-		cout << "You have chosen rock." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		cout << "You have chosen rock." << endl;
 		if (playerRockStr != 0) {
 			Rock playerRock(playerRockStr);
 			playerTool = &playerRock;
@@ -144,7 +138,7 @@ void RPSGame::startGame()
 
 	else if (tool == 2) {
 		// paper
-		cout << "You have chosen paper." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		cout << "You have chosen paper." << endl;
 		if (playerPaperStr != 0) {
 			Paper playerPaper(playerPaperStr);
 			playerTool = &playerPaper;
@@ -159,7 +153,7 @@ void RPSGame::startGame()
 
 	else if (tool == 3) {
 		// scissors
-		cout << "You have chosen scissors." << endl;  //TESTING.  DELETE BEFORE SUBMISSION
+		cout << "You have chosen scissors." << endl;
 		if (playerScissorsStr != 0) {
 			Scissors playerScissors(playerScissorsStr);
 			playerTool = &playerScissors;
@@ -177,8 +171,7 @@ void RPSGame::startGame()
 			return;
 		}
 	
-	//Random AI for testing
-	//Needs to be improved
+	//AI tool choice
 	switch (rand() % 3 + 1)
 	{
 	case 1:
@@ -246,7 +239,6 @@ void RPSGame::gameLoop()
 	int playerToolStr = playerTool->GetStrength();
 	int compToolStr = computerTool->GetStrength();
 
-	//This mess can likely be improved and broken out into its own function
 	if (playerToolType == 'r')
 	{
 		switch (compToolType) 
@@ -402,7 +394,7 @@ bool RPSGame::validateYesNo(string& input)
 }
 
 
-
+//Tool choice validation
 int RPSGame::validateToolChoice(char& input)
 {
 	cin >> input;
@@ -443,6 +435,7 @@ int RPSGame::validateToolChoice(char& input)
 	return 0;
 }
 
+//Allows player to start again
 void RPSGame::playAgain()
 {
 	string userChoice;
@@ -469,7 +462,7 @@ void RPSGame::playAgain()
 
 }
 
-
+//Exits game
 void RPSGame::exitGame()
 {
 	return;

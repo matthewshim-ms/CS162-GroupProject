@@ -8,7 +8,7 @@ Player::Player()
 
 
 Player::Player(bool isComputer)
-{
+{	
 	if (isComputer) {
 		this->isComputer = true;
 	}

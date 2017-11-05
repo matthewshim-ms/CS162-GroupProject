@@ -2,7 +2,7 @@
 ** Program Name: Rock Paper Scissors Game
 ** Author: Group 15
 ** Date: 10/24/17
-** Description: Main file for a dice game
+** Description: Main file for an RPS game
 **
 ** To run this program, simply execute the RPSGame file after compiling
 *********************************************************************/
@@ -21,9 +21,8 @@ private:
 	Player* computer;
 	Tool* playerTool; //Tracks which tool the player has
 	Tool* computerTool; //Tracks which tool the computer has
-	int humanWins = 0;
-	int computerWins = 0;
-	int ties = 0;
+	int humanWins = 0; //Not reset between rounds
+	int computerWins = 0; //Not reset between rounds
 	int playerRockStr = 0;
 	int playerPaperStr = 0;
 	int playerScissorsStr = 0;

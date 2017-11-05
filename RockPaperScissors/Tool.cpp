@@ -27,7 +27,7 @@ void Tool::SetStrength(int incStr)
 }
 
 //Returns strength of the Tool
-int Tool::GetStrength() //Returns strength of tool
+int Tool::GetStrength()
 
 {
 	return strength;
@@ -42,9 +42,3 @@ char Tool::GetType()
 {
 	return type;
 }
-/* // overload constructor so user can specify strength
-Tool::Tool(int strength)
-{
-	this->strength = strength;
-}
-*/

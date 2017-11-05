@@ -7,9 +7,6 @@ a score, methods to manipulate the score and get the score.
 *********************************************************************/
 #ifndef Player_HPP
 #define Player_HPP
-
-#include <iostream>
-#include <string>
 #include "Tool.hpp"
 
 class Player {
