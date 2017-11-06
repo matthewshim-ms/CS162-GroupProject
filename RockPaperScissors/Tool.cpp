@@ -45,6 +45,6 @@ char Tool::GetType()
 /* // overload constructor so user can specify strength
 Tool::Tool(int strength)
 {
-	this->strength = strength;
+this->strength = strength;
 }
 */

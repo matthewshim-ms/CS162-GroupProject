@@ -13,10 +13,11 @@
 
 class Tool
 {
-private:
-	int strength = 0;
+	//private:
+
 protected:
-	char type = ' ';
+	char type;
+	int strength;
 
 public:
 	Tool();
@@ -26,6 +27,6 @@ public:
 	int GetStrength(); //Returns strength of tool
 	void SetType(int incType); //Sets strength for the Tool
 	char GetType(); //Returns strength of tool
-	
+
 };
 #endif 

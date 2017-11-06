@@ -12,7 +12,7 @@
 
 Rock::Rock() //Default constructor
 {
-	SetStrength(1);
+	SetStrength(-1);
 	SetType('r');
 
 

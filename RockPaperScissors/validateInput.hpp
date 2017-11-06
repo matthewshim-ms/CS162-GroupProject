@@ -1,7 +1,7 @@
 /*************************************************
 * Author: Emmet Cooke
 * Date: 10/18/2017
-* Description: This is the header file for the 
+* Description: This is the header file for the
 * validateInput functions.
 *************************************************/
 #ifndef VALIDATE_INPUT_HPP

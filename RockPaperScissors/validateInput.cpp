@@ -13,11 +13,11 @@ using std::to_string;
 #include "validateInput.hpp"
 
 /*************************************************************
- * Description: This function takes in a string and then checks
- * each character within the string to see if it is in the range
- * 0 to 9. If it is, it returns true. If it is not, it exits the
- * while loop and returns false.
- *************************************************************/
+* Description: This function takes in a string and then checks
+* each character within the string to see if it is in the range
+* 0 to 9. If it is, it returns true. If it is not, it exits the
+* while loop and returns false.
+*************************************************************/
 bool checkStringToInt(string stringIn)
 {
 	if (stringIn == "")
@@ -116,7 +116,7 @@ void getNum(int &numIn)
 		else	// If the number entered is positive
 		{
 			num = getInt(validateInput);
-			
+
 			if (!checkStringToInt(validateInput)
 				|| getInt(validateInput) == -1)
 			{
@@ -142,16 +142,16 @@ void getYesNo(bool &choice)
 	do
 	{
 		getline(cin, yesNoChoice);
-		if (tolower(yesNoChoice[0]) != 'y' 
-			&& tolower(yesNoChoice[0]) != 'n'
-			|| yesNoChoice.length() != 1)
+		if (tolower(yesNoChoice[0]) != 'y'
+			&& (tolower(yesNoChoice[0]) != 'n'
+				|| yesNoChoice.length() != 1))
 		{
 			cout << "Please enter either 'y' or 'n'." << endl;
 		}
 	} while (tolower(yesNoChoice[0]) != 'y'
-			&& tolower(yesNoChoice[0]) != 'n'
-			|| yesNoChoice.length() != 1);
-	
+		&& (tolower(yesNoChoice[0]) != 'n'
+			|| yesNoChoice.length() != 1));
+
 	if (tolower(yesNoChoice[0]) == 'y')
 	{
 		choice = true;

@@ -6,13 +6,13 @@
 **
 ** To run this program, simply run the RPSGame file after compiling
 *********************************************************************************/
-	
+
 #include "Scissors.hpp"
 
 //Default constructor
 Scissors::Scissors()
 {
-	SetStrength(1);
+	SetStrength(-1);
 	SetType('s');
 }
 

@@ -10,7 +10,7 @@
 
 Paper::Paper() //Default constructor
 {
-	SetStrength(1);
+	SetStrength(-1);
 	SetType('p');
 
 }

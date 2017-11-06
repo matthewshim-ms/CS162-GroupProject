@@ -21,15 +21,15 @@ private:
 	Player* computer;
 	Tool* playerTool; //Tracks which tool the player has
 	Tool* computerTool; //Tracks which tool the computer has
-	int humanWins;
-	int computerWins;
-	int ties;
-	int playerRockStr = NULL;
-	int playerPaperStr = NULL;
-	int playerScissorsStr = NULL;
-	int computerRockStr = NULL;
-	int computerPaperStr = NULL;
-	int computerScissorsStr = NULL;
+	int humanWins = 0;
+	int computerWins = 0;
+	int ties = 0;
+	int playerRockStr;
+	int playerPaperStr;
+	int playerScissorsStr;
+	int computerRockStr;
+	int computerPaperStr;
+	int computerScissorsStr;
 	void validateIntegerInput(int& input);
 	int validateToolChoice(char& input);
 	bool validateYesNo(string &input);
